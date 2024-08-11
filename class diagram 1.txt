@@ -1,0 +1,25 @@
++--------------------+          +------------------------+
+|    <<interface>>   |          |    PasswordAuthHandler  |
+|    AuthHandler     |          +------------------------+
++--------------------+          | - nextHandler: AuthHandler |
+| + setNext(handler: AuthHandler) | + authenticate(credential: String): boolean |
+| + authenticate(credential: String): boolean | + setNext(handler: AuthHandler)    |
++--------------------+          +------------------------+
+         ^                                    |
+         |                                    |
+         |                                    v
++--------------------+          +------------------------+
+|   OtpAuthHandler   |          |   BiometricAuthHandler  |
++--------------------+          +------------------------+
+| - nextHandler: AuthHandler |   | - nextHandler: AuthHandler |
+| + authenticate(credential: String): boolean | + authenticate(credential: String): boolean |
+| + setNext(handler: AuthHandler)    | + setNext(handler: AuthHandler)    |
++--------------------+          +------------------------+
+         |
+         |
+         v
++--------------------+
+| AuthenticationSystem |
++--------------------+
+| + main(args: String[]): void |
++--------------------+
